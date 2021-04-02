@@ -48,10 +48,15 @@ public class Util {
     }
 
 
-    public static boolean packageMatch(String packageFromOS, String myPackage){
-        return
-        null!=packageFromOS
-        &&
-        ( packageFromOS.contains(myPackage) || myPackage.contains(packageFromOS) );
+    public static boolean packageMatch(String packageFromOS, ConfigEntity configEntity){
+        if(null==packageFromOS || configEntity==null){
+            return false;
+        }
+        for(String myPackage:configEntity.getPackageList()){
+            if( packageFromOS.contains(myPackage) || myPackage.contains(packageFromOS) ){
+                return true;
+            }
+        }
+        return false;
     }
 }

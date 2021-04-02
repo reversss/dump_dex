@@ -35,7 +35,7 @@ public class Dumper implements IXposedHookLoadPackage {
                 if(null==configEntity){
                     return;
                 }
-                if (Util.packageMatch(loadPackageParam.processName,configEntity.getPackageName())) {
+                if (Util.packageMatch(loadPackageParam.processName,configEntity)) {
                     dump((ByteBuffer) param.args[0], loadPackageParam.packageName);
                 }
                 super.beforeHookedMethod(param);
